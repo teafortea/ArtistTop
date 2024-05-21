@@ -46,16 +46,9 @@
 <body>
     <div class="title">Top Artists</div>
     <div class="artists" id="artists"></div>
-    <canvas id="canvas" style="display: none;"></canvas>
-
+    <canvas id="canvas" width="900" height="700" style="display: none;"></canvas>
 
     <script>
-function getURLParameter(name) {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get(name);
-}
-
-// script.js
 function getURLParameter(name) {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(name);
@@ -64,7 +57,42 @@ function getURLParameter(name) {
 window.onload = function() {
     const artistsParam = getURLParameter('artists');
     if (artistsParam) {
-        document.getElementById('artists').innerText = decodeURIComponent(artistsParam);
+        const artistsText = decodeURIComponent(artistsParam);
+        document.getElementById('artists').innerText = artistsText;
+
+        // Draw the text on the canvas
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        // Set font and styles
+        const titleFont = '100px \'Josefin Sans\', sans-serif';
+        const artistsFont = '80px \'Josefin Sans\', sans-serif';
+
+        ctx.fillStyle = 'black'; // Background color
+        ctx.fillRect(0, 0, canvas.width, canvas.height); // Fill background
+
+        // Draw title
+        ctx.font = titleFont;
+        ctx.fillStyle = '#F8396F';
+        ctx.fillText('Top Artists', 32, 168);
+
+        // Draw artists
+        ctx.font = artistsFont;
+        ctx.fillStyle = '#FFFFFF';
+
+        // Handle line breaks for artists
+        const lineHeight = 80;
+        const lines = artistsText.split('\n');
+        for (let i = 0; i < lines.length; i++) {
+            ctx.fillText(lines[i], 129, 265 + i * lineHeight);
+        }
+
+        // Save canvas as an image
+        const image = canvas.toDataURL('image/png');
+        const link = document.createElement('a');
+        link.href = image;
+        link.download = 'top_artists.png';
+        link.click();
     }
 }
     </script>
