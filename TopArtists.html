@@ -85,12 +85,13 @@ window.onload = function() {
             ctx.fillText(lines[i], 129, 265 + i * lineHeight);
         }
 
-        // Save canvas as an image
-        const image = canvas.toDataURL('image/png');
-        const link = document.createElement('a');
-        link.href = image;
-        link.download = 'top_artists.png';
-        link.click();
+        // Convert canvas content to PNG image
+        const img = new Image();
+        img.src = canvas.toDataURL();
+        img.onload = function() {
+            // Display the image
+            document.getElementById('outputImage').src = img.src;
+            document.getElementById('outputImage').style.display = 'block';
     }
 }
     </script>
