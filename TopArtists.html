@@ -44,10 +44,8 @@
     </style>
 </head>
 <body>
-    <div class="title">Top Artists</div>
     <div class="artists" id="artists"></div>
-    <canvas id="canvas" width="900" height="700" style="display: none;"></canvas>
-    <img id="output" style="display: none;">
+    <canvas id="canvas" width="973" height="731" style="display: none;"></canvas>
 
     <script>
 function getURLParameter(name) {
@@ -69,7 +67,6 @@ window.onload = function() {
         const titleFont = '100px \'Josefin Sans\', sans-serif';
         const artistsFont = '80px \'Josefin Sans\', sans-serif';
 
-        // Set transparent background
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         // Draw title
@@ -88,12 +85,12 @@ window.onload = function() {
             ctx.fillText(lines[i], 129, 265 + i * lineHeight);
         }
 
-        // Get data URL of the image
-        const imageUrl = canvas.toDataURL('image/png');
-
-        // Display image URL
-        document.getElementById('output').src = imageUrl;
-        document.getElementById('output').style.display = 'block';
+        // Save canvas as an image
+        const image = canvas.toDataURL('image/png');
+        const link = document.createElement('a');
+        link.href = image;
+        link.download = 'top_artists.png';
+        link.click();
     }
 }
     </script>
