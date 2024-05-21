@@ -44,7 +44,6 @@
     </style>
 </head>
 <body>
-    <div class="artists" id="artists"></div>
     <canvas id="canvas" width="973" height="731" style="display: none;"></canvas>
 
     <script>
@@ -85,19 +84,26 @@ window.onload = function() {
             ctx.fillText(lines[i], 129, 265 + i * lineHeight);
         }
 
+
         // Convert canvas content to Base64 URL
         const base64URL = canvas.toDataURL();
+        
         // Store URL in dictionary with associated metadata
-        imageURLs['top_artists_image'] = {
-            url: base64URL,
-            metadata: {
-                artists: artistsText,
-                timestamp: new Date().toISOString()
+        const imageDictionary = {
+            top_artists_image: {
+                url: base64URL,
+                metadata: {
+                    artists: artistsText,
+                    timestamp: new Date().toISOString()
+                }
             }
         };
+
         // Display the image
         document.getElementById('outputImage').src = base64URL;
-        document.getElementById('outputImage').style.display = 'block';
+        
+        // Display the dictionary
+        document.getElementById('imageData').innerText = JSON.stringify(imageDictionary, null, 2);
     }
 }
     </script>
