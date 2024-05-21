@@ -45,7 +45,7 @@
 </head>
 <body>
     <canvas id="canvas" width="973" height="731" style="display: none;"></canvas>
-    <div id="imageURL"></div> <!-- This div will display the image URL -->
+    <img id="image" alt="Top Artists Image"> <!-- This img tag will display the base64 URL -->
 
     <script>
         function getURLParameter(name) {
@@ -85,10 +85,9 @@
                     ctx.fillText(lines[i], 129, 265 + i * lineHeight);
                 }
 
-                // Convert canvas to image URL
+                // Convert canvas to base64 image URL
                 const imageURL = canvas.toDataURL(); // Generates a data URL for the image
-                const imageURLNode = document.createTextNode(imageURL); // Create a text node containing the URL
-                document.getElementById('imageURL').appendChild(imageURLNode); // Append the text node to the imageURL div
+                document.getElementById('image').src = imageURL; // Set the src attribute of the img tag to display the image
             }
         }
     </script>
