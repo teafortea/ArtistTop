@@ -85,25 +85,10 @@ window.onload = function() {
         }
 
 
-        // Convert canvas content to Base64 URL
-        const base64URL = canvas.toDataURL();
-        
-        // Store URL in dictionary with associated metadata
-        const imageDictionary = {
-            top_artists_image: {
-                url: base64URL,
-                metadata: {
-                    artists: artistsText,
-                    timestamp: new Date().toISOString()
-                }
-            }
-        };
 
-        // Display the image
+        // Convert canvas content to Base64 URL and display it
+        const base64URL = canvas.toDataURL();
         document.getElementById('outputImage').src = base64URL;
-        
-        // Display the dictionary
-        document.getElementById('imageData').innerText = JSON.stringify(imageDictionary, null, 2);
     }
 }
     </script>
