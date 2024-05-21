@@ -85,13 +85,11 @@ window.onload = function() {
             ctx.fillText(lines[i], 129, 265 + i * lineHeight);
         }
 
-        // Convert canvas content to PNG image
-        const img = new Image();
-        img.src = canvas.toDataURL();
-        img.onload = function() {
-            // Display the image
-            document.getElementById('outputImage').src = img.src;
-            document.getElementById('outputImage').style.display = 'block';
+        // Convert canvas content to Base64 URL
+        const base64URL = canvas.toDataURL();
+        // Display the image
+        document.getElementById('outputImage').src = base64URL;
+        document.getElementById('outputImage').style.display = 'block';
     }
 }
     </script>
