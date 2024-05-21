@@ -87,7 +87,8 @@
 
                 // Convert canvas to image URL
                 const imageURL = canvas.toDataURL(); // Generates a data URL for the image
-                document.getElementById('imageURL').innerText = imageURL; // Display the URL on the webpage
+                const imageURLNode = document.createTextNode(imageURL); // Create a text node containing the URL
+                document.getElementById('imageURL').appendChild(imageURLNode); // Append the text node to the imageURL div
             }
         }
     </script>
