@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Artists</title>
+    <!-- Import Josefin Sans from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            position: relative;
+            width: 900px;
+            height: 700px;
+            background-color: #00000000;
+        }
+
+        .title {
+            position: absolute;
+            width: 508px;
+            height: 100px;
+            left: 32px;
+            top: 68px;
+            font-family: 'Josefin Sans', sans-serif;
+            font-style: normal;
+            font-weight: 700;
+            font-size: 100px;
+            line-height: 100px;
+            color: #F8396F;
+        }
+
+        .artists {
+            position: absolute;
+            width: 832px;
+            height: 480px;
+            left: 129px;
+            top: 185px;
+            font-family: 'Josefin Sans', sans-serif;
+            font-style: normal;
+            font-weight: 700;
+            font-size: 80px;
+            line-height: 80px;
+            color: #FFFFFF;
+        }
+    </style>
+</head>
+<body>
+    <div class="title">Top Artists</div>
+    <div class="artists" id="artists"></div>
+    <canvas id="canvas" style="display: none;"></canvas>
+
+
+    <script>
+function getURLParameter(name) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name);
+}
+
+// script.js
+function getURLParameter(name) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name);
+}
+
+window.onload = function() {
+    const artistsParam = getURLParameter('artists');
+    if (artistsParam) {
+        document.getElementById('artists').innerText = decodeURIComponent(artistsParam);
+    }
+}
+    </script>
+</body>
+</html>
